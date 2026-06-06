@@ -1,0 +1,71 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ── Helpers ──────────────────────────────────────────────
+    function isAdmin() {
+      return request.auth != null && request.auth.token.email != null;
+    }
+
+    // ── colleges ─────────────────────────────────────────────
+    // Public: read verified colleges only
+    // Admin: full read/write
+    match /colleges/{collegeId} {
+      allow read: if resource.data.verified == true || isAdmin();
+      allow write: if isAdmin();
+    }
+
+    // ── leads ─────────────────────────────────────────────────
+    // Public: create only (students submit their own lead)
+    // Admin: full read/write
+    match /leads/{leadId} {
+      allow create: if
+        request.resource.data.keys().hasAll(['student_name', 'phone', 'stream', 'created_at']) &&
+        request.resource.data.student_name is string &&
+        request.resource.data.phone is string;
+      allow read, update, delete: if isAdmin();
+    }
+
+    // ── reviews ───────────────────────────────────────────────
+    // Public: read verified reviews; create unverified reviews
+    // Admin: full read/write (sets verified: true to publish)
+    match /reviews/{reviewId} {
+      allow read: if resource.data.verified == true || isAdmin();
+      allow create: if
+        request.resource.data.verified == false &&
+        request.resource.data.keys().hasAll(['college_id', 'reviewer_name', 'review_text', 'created_at']);
+      allow update, delete: if isAdmin();
+    }
+
+    // ── exam_updates ──────────────────────────────────────────
+    // Public: read only
+    // Admin: full read/write
+    match /exam_updates/{examId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // ── blog_posts ────────────────────────────────────────────
+    // Public: read published posts only
+    // Admin: full read/write
+    match /blog_posts/{postId} {
+      allow read: if resource.data.published == true || isAdmin();
+      allow write: if isAdmin();
+    }
+
+    // ── pending_colleges (Phase 2) ────────────────────────────
+    // Public: create (self-listing form)
+    // Admin: full read/write
+    match /pending_colleges/{docId} {
+      allow create: if
+        request.resource.data.keys().hasAll(['college_name', 'contact_email', 'created_at']);
+      allow read, update, delete: if isAdmin();
+    }
+
+    // Block everything else
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

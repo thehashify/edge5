@@ -1,0 +1,15 @@
+node_modules/
+functions/node_modules/
+.env
+.env.local
+*.env
+.firebase/
+.netlify/
+.vercel/
+service-account*.json
+*-service-account.json
+firebase-debug.log
+firestore-debug.log
+ui-debug.log
+.DS_Store
+Thumbs.db

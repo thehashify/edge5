@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edge5 — Find Your Right College. Not Just Any College.</title>
+  <meta name="description" content="India's AI-powered college counselling portal. Answer a few questions. Get your verified college shortlist. Free. Unbiased. No spam.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Edge5 — Find Your Right College">
+  <meta property="og:description" content="AI-powered college counselling for Indian students. Verified colleges, zero paid rankings.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://edge5.in/">
+  <meta name="theme-color" content="#C9952A">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/header.css">
+  <link rel="stylesheet" href="/css/footer.css">
+  <style>
+    /* ── Hero ── */
+    .hero {
+      background-color: var(--color-bg-dark);
+      padding-block: var(--sp-20) var(--sp-24);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -120px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(201,149,42,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero__label {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--sp-2);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-amber);
+      border: 1px solid rgba(201,149,42,0.3);
+      border-radius: var(--radius-pill);
+      padding: 6px 14px;
+      margin-bottom: var(--sp-6);
+    }
+
+    .hero__label::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--color-amber);
+      border-radius: 50%;
+    }
+
+    .hero__headline {
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: clamp(36px, 6vw, 64px);
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      color: var(--color-white);
+      max-width: 820px;
+      margin-inline: auto;
+      margin-bottom: var(--sp-5);
+    }
+
+    .hero__headline em {
+      font-style: normal;
+      color: var(--color-amber);
+    }
+
+    .hero__subheading {
+      font-size: clamp(16px, 2vw, 18px);
+      font-weight: 400;
+      color: var(--color-grey);
+      max-width: 520px;
+      margin-inline: auto;
+      margin-bottom: var(--sp-8);
+      line-height: 1.7;
+    }
+
+    .hero__cta {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--sp-3);
+    }
+
+    .hero__cta .btn {
+      font-size: 17px;
+      padding: 16px 40px;
+    }
+
+    .hero__trust {
+      font-size: 13px;
+      color: rgba(255,255,255,0.35);
+      margin-top: var(--sp-2);
+    }
+
+    /* ── Trust Bar ── */
+    .trust-bar {
+      background-color: rgba(201,149,42,0.05);
+      border-top: 1px solid rgba(201,149,42,0.12);
+      border-bottom: 1px solid rgba(201,149,42,0.12);
+      padding-block: var(--sp-5);
+    }
+
+    .trust-bar__inner {
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-4);
+      align-items: center;
+      text-align: center;
+      max-width: var(--max-width);
+      margin-inline: auto;
+      padding-inline: var(--sp-6);
+    }
+
+    .trust-bar__item {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--color-amber);
+      letter-spacing: 0.03em;
+    }
+
+    .trust-bar__sep {
+      display: none;
+      color: rgba(201,149,42,0.3);
+    }
+
+    @media (min-width: 640px) {
+      .trust-bar__inner { flex-direction: row; justify-content: center; }
+      .trust-bar__sep { display: block; }
+    }
+
+    /* ── How It Works ── */
+    .how-it-works {
+      padding-block: var(--sp-20);
+      background-color: var(--color-bg-dark);
+    }
+
+    .how-it-works__steps {
+      display: grid;
+      gap: var(--sp-6);
+      margin-top: var(--sp-10);
+    }
+
+    .step-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-8);
+      position: relative;
+    }
+
+    .step-card__number {
+      font-size: 48px;
+      font-weight: 700;
+      color: rgba(201,149,42,0.12);
+      line-height: 1;
+      margin-bottom: var(--sp-4);
+    }
+
+    .step-card__title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--color-white);
+      margin-bottom: var(--sp-2);
+    }
+
+    .step-card__text {
+      font-size: 15px;
+      color: var(--color-grey);
+      line-height: 1.6;
+    }
+
+    @media (min-width: 768px) {
+      .how-it-works__steps { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    /* ── Stream Cards ── */
+    .streams {
+      padding-block: var(--sp-20);
+      background-color: #0D0D15;
+    }
+
+    .streams__grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--sp-4);
+      margin-top: var(--sp-10);
+    }
+
+    .stream-card {
+      background: var(--color-navy);
+      border-top: 2px solid var(--color-amber);
+      border-radius: var(--radius-md);
+      padding: var(--sp-6) var(--sp-5);
+      text-decoration: none;
+      transition: transform var(--transition), box-shadow var(--transition);
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-2);
+    }
+
+    .stream-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    }
+
+    .stream-card__name {
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--color-white);
+    }
+
+    .stream-card__sub {
+      font-size: 12px;
+      color: var(--color-grey);
+    }
+
+    @media (min-width: 768px) {
+      .streams__grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    @media (min-width: 1024px) {
+      .streams__grid { grid-template-columns: repeat(6, 1fr); }
+    }
+
+    /* ── Exam Updates ── */
+    .exam-updates {
+      padding-block: var(--sp-20);
+      background-color: var(--color-bg-dark);
+    }
+
+    .exam-updates__grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--sp-4);
+      margin-top: var(--sp-10);
+    }
+
+    .exam-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: var(--radius-md);
+      padding: var(--sp-5);
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-2);
+    }
+
+    .exam-card__name {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--color-white);
+    }
+
+    .exam-card__status {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--color-amber);
+    }
+
+    .exam-card__date {
+      font-size: 13px;
+      color: var(--color-grey);
+    }
+
+    .exam-card__loading {
+      color: var(--color-grey);
+      font-size: 13px;
+    }
+
+    @media (min-width: 768px) {
+      .exam-updates__grid { grid-template-columns: repeat(4, 1fr); }
+    }
+
+    /* Section layout helpers */
+    .section-header {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--sp-3);
+    }
+  </style>
+</head>
+<body>
+  <!-- Header injected by header.js -->
+  <div id="header-mount"></div>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container">
+        <span class="hero__label">AI-Powered College Counselling</span>
+        <h1 class="hero__headline">Find Your <em>Right</em> College.<br>Not Just Any College.</h1>
+        <p class="hero__subheading">Answer a few questions. Get your verified college shortlist. Free. Unbiased. No spam.</p>
+        <div class="hero__cta">
+          <a href="/counsellor.html" class="btn btn--gold">Start AI Counselling</a>
+          <span class="hero__trust">No registration needed &nbsp;·&nbsp; Takes 3 minutes</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trust Bar -->
+    <div class="trust-bar">
+      <div class="trust-bar__inner">
+        <span class="trust-bar__item">✓ Verified Colleges Only</span>
+        <span class="trust-bar__sep">|</span>
+        <span class="trust-bar__item">✓ Zero Paid Rankings</span>
+        <span class="trust-bar__sep">|</span>
+        <span class="trust-bar__item">✓ AI-Powered Matching</span>
+      </div>
+    </div>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-heading">How Edge5 Works</h2>
+          <p class="section-subheading">Three steps to your personalised college shortlist</p>
+        </div>
+        <div class="how-it-works__steps">
+          <div class="step-card">
+            <div class="step-card__number">01</div>
+            <h3 class="step-card__title">Answer questions about your goals</h3>
+            <p class="step-card__text">Our AI counsellor asks about your stream, exam scores, budget, location preferences, and what matters most to you.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-card__number">02</div>
+            <h3 class="step-card__title">Get your personalised shortlist</h3>
+            <p class="step-card__text">Edge5 scores every verified college on four factors specific to you — and returns your top 3 with honest reasoning.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-card__number">03</div>
+            <h3 class="step-card__title">Apply with full information</h3>
+            <p class="step-card__text">View complete fee structures, placement data, NAAC grades, and student reviews — then enquire directly.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stream Cards -->
+    <section class="streams" id="streams">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-heading">What are you studying?</h2>
+          <p class="section-subheading">Pick your stream and the counsellor starts with the right questions.</p>
+        </div>
+        <div class="streams__grid">
+          <a href="/counsellor.html?stream=mba" class="stream-card">
+            <span class="stream-card__name">MBA</span>
+            <span class="stream-card__sub">Management</span>
+          </a>
+          <a href="/counsellor.html?stream=engineering" class="stream-card">
+            <span class="stream-card__name">Engineering</span>
+            <span class="stream-card__sub">B.Tech / M.Tech</span>
+          </a>
+          <a href="/counsellor.html?stream=medical" class="stream-card">
+            <span class="stream-card__name">Medical</span>
+            <span class="stream-card__sub">MBBS / BDS</span>
+          </a>
+          <a href="/counsellor.html?stream=law" class="stream-card">
+            <span class="stream-card__name">Law</span>
+            <span class="stream-card__sub">LLB / BA LLB</span>
+          </a>
+          <a href="/counsellor.html?stream=design" class="stream-card">
+            <span class="stream-card__name">Design</span>
+            <span class="stream-card__sub">B.Des / M.Des</span>
+          </a>
+          <a href="/counsellor.html" class="stream-card">
+            <span class="stream-card__name">Other</span>
+            <span class="stream-card__sub">All streams</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Exam Updates -->
+    <section class="exam-updates" id="exam-updates">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-heading">Exam Updates</h2>
+          <p class="section-subheading">Live status and upcoming deadlines for major entrance exams.</p>
+        </div>
+        <div class="exam-updates__grid" id="exam-updates-grid">
+          <!-- Populated by JS from Firestore -->
+          <div class="exam-card"><p class="exam-card__loading">Loading...</p></div>
+          <div class="exam-card"><p class="exam-card__loading">Loading...</p></div>
+          <div class="exam-card"><p class="exam-card__loading">Loading...</p></div>
+          <div class="exam-card"><p class="exam-card__loading">Loading...</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="section section--light" id="about">
+      <div class="container">
+        <div class="section-header" style="align-items:flex-start;text-align:left;">
+          <h2 class="section-heading" style="color:var(--color-navy);">Why Edge5?</h2>
+          <p class="section-subheading">Most college portals sell rankings to the highest bidder. Edge5 does not. We verify every college ourselves, never accept payment for placement in results, and the AI counsellor recommends only what genuinely fits you — not what pays us the most.</p>
+          <p class="section-subheading" style="margin-top:var(--sp-4);">Edge5 is a venture under <a href="https://thehashify.com" style="color:var(--color-amber);text-decoration:underline;">The Hashify</a>, a performance marketing agency in Bengaluru. We built this because we saw how broken college discovery was for Indian students.</p>
+          <a href="/counsellor.html" class="btn btn--gold" style="margin-top:var(--sp-6);">Start Counselling — Free</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-heading">Get in Touch</h2>
+          <p class="section-subheading">For colleges looking to get listed, or for any enquiries.</p>
+          <a href="mailto:hello@edge5.in" class="btn btn--outline-gold" style="margin-top:var(--sp-5);">hello@edge5.in</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer injected by footer.js -->
+  <div id="footer-mount"></div>
+
+  <script src="/js/header.js"></script>
+  <script src="/js/footer.js"></script>
+  <script src="/js/sw-register.js"></script>
+  <script type="module">
+    // Exam updates from Firestore (wired in Step 7 when Firebase is connected)
+    // For now render static placeholders
+    const exams = [
+      { name: 'JEE Main',   status: 'Session 2 Registration Open', date: 'Apr 2026' },
+      { name: 'CAT 2026',   status: 'Notification Expected',       date: 'Jul 2026' },
+      { name: 'NEET UG',    status: 'Results Declared',            date: 'Jun 2026' },
+      { name: 'CLAT',       status: 'Registration Open',           date: 'Dec 2026' },
+    ];
+
+    const grid = document.getElementById('exam-updates-grid');
+    if (grid) {
+      grid.innerHTML = exams.map(e => `
+        <div class="exam-card">
+          <span class="exam-card__name">${e.name}</span>
+          <span class="exam-card__status">${e.status}</span>
+          <span class="exam-card__date">Next date: ${e.date}</span>
+        </div>
+      `).join('');
+    }
+  </script>
+</body>
+</html>

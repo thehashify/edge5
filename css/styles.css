@@ -1,0 +1,449 @@
+/* ============================================================
+   Edge5 — Global Styles
+   All colour and font variables defined here.
+   No hardcoded colours anywhere else.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@800&family=DM+Sans:wght@300;400;500;700&display=swap');
+
+/* ── CSS Custom Properties ── */
+:root {
+  /* Colours */
+  --color-bg-dark:    #0B0B0B;
+  --color-bg-light:   #F2EFE9;
+  --color-navy:       #1E1B3A;
+  --color-amber:      #C9952A;
+  --color-white:      #FFFFFF;
+  --color-grey:       #6B6B6B;
+  --color-outline:    #99907E;
+  --color-success:    #2D6A4F;
+  --color-error:      #BA1A1A;
+
+  /* Semantic aliases */
+  --color-bg:         var(--color-bg-dark);
+  --color-text:       var(--color-white);
+  --color-text-muted: var(--color-grey);
+  --color-accent:     var(--color-amber);
+  --color-border:     rgba(201, 149, 42, 0.2);
+
+  /* Typography */
+  --font-wordmark: 'Syne', sans-serif;
+  --font-body:     'DM Sans', sans-serif;
+
+  /* Spacing scale */
+  --sp-1:  4px;
+  --sp-2:  8px;
+  --sp-3:  12px;
+  --sp-4:  16px;
+  --sp-5:  20px;
+  --sp-6:  24px;
+  --sp-8:  32px;
+  --sp-10: 40px;
+  --sp-12: 48px;
+  --sp-16: 64px;
+  --sp-20: 80px;
+  --sp-24: 96px;
+
+  /* Layout */
+  --max-width: 1280px;
+  --header-height: 64px;
+
+  /* Radius */
+  --radius-sm:  4px;
+  --radius-md:  8px;
+  --radius-lg:  16px;
+  --radius-xl:  24px;
+  --radius-pill: 999px;
+
+  /* Transitions */
+  --transition: 200ms ease;
+  --transition-slow: 400ms ease;
+}
+
+/* ── Reset ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--color-bg-dark);
+  color: var(--color-white);
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img, svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+input, textarea, select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* ── Typography Utilities ── */
+.text-amber   { color: var(--color-amber); }
+.text-navy    { color: var(--color-navy); }
+.text-grey    { color: var(--color-grey); }
+.text-white   { color: var(--color-white); }
+.text-sm      { font-size: 14px; }
+.text-xs      { font-size: 12px; }
+.text-lg      { font-size: 18px; }
+.text-xl      { font-size: 20px; }
+.font-300     { font-weight: 300; }
+.font-500     { font-weight: 500; }
+.font-700     { font-weight: 700; }
+
+/* ── Layout Utilities ── */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: var(--sp-6);
+}
+
+.section {
+  padding-block: var(--sp-20);
+}
+
+.section--light {
+  background-color: var(--color-bg-light);
+  color: var(--color-navy);
+}
+
+/* ── Edge5 Logo Component ── */
+.e5-logo {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 3px;
+  text-decoration: none;
+  min-width: 120px;
+}
+
+.e5-logo__svg {
+  height: 28px;
+  width: auto;
+  display: block;
+}
+
+.e5-logo__attribution {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #3A3A3A;
+}
+
+/* Light version — swap to light SVG and lighter attribution */
+.e5-logo--light .e5-logo__svg {
+  content: url('/images/logo/logo-light.svg');
+}
+
+.e5-logo--light .e5-logo__attribution {
+  color: #AAAAAA;
+}
+
+/* ── Button System ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
+  padding: 12px 24px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 1;
+  transition: background-color var(--transition), color var(--transition),
+              border-color var(--transition), transform var(--transition);
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.btn:active { transform: scale(0.97); }
+
+.btn--gold {
+  background-color: var(--color-amber);
+  color: var(--color-bg-dark);
+  font-weight: 700;
+}
+
+.btn--gold:hover {
+  background-color: #d9a330;
+}
+
+.btn--navy {
+  background-color: transparent;
+  color: var(--color-navy);
+  border: 1.5px solid var(--color-navy);
+}
+
+.btn--navy:hover {
+  background-color: var(--color-navy);
+  color: var(--color-white);
+}
+
+.btn--outline-gold {
+  background-color: transparent;
+  color: var(--color-amber);
+  border: 1.5px solid var(--color-amber);
+}
+
+.btn--outline-gold:hover {
+  background-color: var(--color-amber);
+  color: var(--color-bg-dark);
+}
+
+.btn--outline-white {
+  background-color: transparent;
+  color: var(--color-white);
+  border: 1.5px solid rgba(255,255,255,0.3);
+}
+
+.btn--outline-white:hover {
+  border-color: var(--color-white);
+}
+
+.btn--full { width: 100%; }
+
+.btn--sm {
+  padding: 8px 16px;
+  font-size: 13px;
+}
+
+/* ── Badge System ── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.badge--gold-outline {
+  color: var(--color-amber);
+  border: 1px solid var(--color-amber);
+  background: transparent;
+}
+
+.badge--verified {
+  color: var(--color-amber);
+  border: 1px solid var(--color-amber);
+  background: rgba(201, 149, 42, 0.08);
+}
+
+.badge--verified::before {
+  content: '✓';
+  font-weight: 700;
+}
+
+.badge--success {
+  color: var(--color-success);
+  border: 1px solid var(--color-success);
+  background: rgba(45, 106, 79, 0.08);
+}
+
+/* ── Form Elements ── */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.form-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-grey);
+  letter-spacing: 0.03em;
+}
+
+.form-input {
+  width: 100%;
+  padding: 12px 16px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: var(--radius-md);
+  color: var(--color-white);
+  font-size: 15px;
+  font-weight: 400;
+  transition: border-color var(--transition);
+  outline: none;
+}
+
+.form-input::placeholder { color: var(--color-grey); }
+
+.form-input:focus {
+  border-color: var(--color-amber);
+}
+
+.form-input--light {
+  background: var(--color-white);
+  border-color: rgba(30,27,58,0.2);
+  color: var(--color-navy);
+}
+
+.form-input--light:focus {
+  border-color: var(--color-amber);
+}
+
+/* ── Card Base ── */
+.card {
+  background: var(--color-navy);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-6);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+
+.card--dark {
+  background: #111118;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+/* ── Stat Card ── */
+.stat-card {
+  background: var(--color-navy);
+  border-radius: var(--radius-md);
+  padding: var(--sp-5) var(--sp-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+}
+
+.stat-card__value {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--color-amber);
+  line-height: 1.2;
+}
+
+.stat-card__label {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--color-grey);
+}
+
+/* ── Section Headings ── */
+.section-heading {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: clamp(28px, 4vw, 42px);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.section-subheading {
+  font-size: 17px;
+  font-weight: 400;
+  color: var(--color-grey);
+  line-height: 1.6;
+  max-width: 580px;
+}
+
+/* ── Divider ── */
+.divider {
+  border: none;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.divider--amber {
+  border-top-color: rgba(201, 149, 42, 0.3);
+}
+
+/* ── Overlay ── */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  z-index: 400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--sp-6);
+  backdrop-filter: blur(4px);
+}
+
+.overlay--hidden { display: none; }
+
+/* ── Spinner ── */
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255,255,255,0.2);
+  border-top-color: var(--color-amber);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  display: inline-block;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── Animations ── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.animate-fadeInUp { animation: fadeInUp 0.4s ease forwards; }
+.animate-fadeIn   { animation: fadeIn 0.3s ease forwards; }
+
+/* ── Responsive Helpers ── */
+.hide-mobile  { display: none; }
+.hide-desktop { display: block; }
+
+@media (min-width: 1024px) {
+  .hide-mobile  { display: block; }
+  .hide-desktop { display: none; }
+}
+
+/* ── Scrollbar Styling ── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: rgba(201,149,42,0.3);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--color-amber); }
