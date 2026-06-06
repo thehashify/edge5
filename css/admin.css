@@ -1,0 +1,49 @@
+/* admin.css — built in Step 13 */
+
+.admin-body {
+  background-color: var(--color-bg-dark);
+  min-height: 100vh;
+}
+
+/* Login screen */
+.admin-login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: var(--sp-6);
+}
+
+.admin-login__card {
+  background: var(--color-navy);
+  border-radius: var(--radius-xl);
+  padding: var(--sp-10) var(--sp-8);
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-6);
+}
+
+.admin-login__logo {
+  align-self: center;
+}
+
+.admin-login__heading {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--color-white);
+  text-align: center;
+}
+
+.admin-login__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+
+.admin-login__error {
+  font-size: 13px;
+  color: var(--color-error);
+  min-height: 18px;
+}

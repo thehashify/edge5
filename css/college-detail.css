@@ -1,0 +1,19 @@
+/* college-detail.css — built in Step 12 */
+
+.college-sticky-bar {
+  display: none;
+}
+
+@media (max-width: 1023px) {
+  .college-sticky-bar {
+    display: block;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--color-navy);
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding: var(--sp-4) var(--sp-6);
+    z-index: 50;
+  }
+}

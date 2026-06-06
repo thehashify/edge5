@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin — Edge5</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#C9952A">
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body class="admin-body">
+  <div id="admin-root">
+    <!-- Login screen shown by default; dashboard shown after auth -->
+    <div class="admin-login" id="admin-login">
+      <div class="admin-login__card">
+        <a href="/index.html" class="e5-logo admin-login__logo" aria-label="Edge5 home">
+          <img src="/images/logo/logo-dark.svg" alt="Edge5" class="e5-logo__svg">
+          <span class="e5-logo__attribution">A The Hashify Venture</span>
+        </a>
+        <h1 class="admin-login__heading">Admin Sign In</h1>
+        <form class="admin-login__form" id="login-form" novalidate>
+          <div class="form-group">
+            <label class="form-label" for="login-email">Email</label>
+            <input class="form-input" type="email" id="login-email" placeholder="admin@edge5.in" required autocomplete="email">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="login-password">Password</label>
+            <input class="form-input" type="password" id="login-password" required autocomplete="current-password">
+          </div>
+          <p class="admin-login__error" id="login-error" aria-live="polite"></p>
+          <button type="submit" class="btn btn--gold btn--full" id="login-btn">Sign In</button>
+        </form>
+      </div>
+    </div>
+    <!-- Dashboard injected by admin.js after successful login -->
+    <div class="admin-dashboard" id="admin-dashboard" hidden></div>
+  </div>
+  <script src="/js/sw-register.js"></script>
+  <script type="module" src="/js/admin.js"></script>
+</body>
+</html>
